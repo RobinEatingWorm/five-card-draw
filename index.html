@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>Five-Card Draw</title>
+        <link rel="stylesheet" href="styles.css">
+        <script>
+            var hn1 = [];
+            var hs1 = [];
+            var holdcards = [0, 0, 0, 0, 0];
+            var hn2 = [];
+            var hs2 = [];
+            var bet = 5;
+            var win = 0;
+            var totalbet = 0;
+            var totalwin = 0;
+            var hrank = ["High Card", "Pair", "Two Pair", "Three of a Kind", "Straight", "Flush", "Full House", "Four of a Kind", "Straight Flush", "Royal Flush"];
+            var hcolor = ["red", "orange", "yellow", "chartreuse", "lime", "cyan", "deepskyblue", "blue", "darkviolet", "magenta"];
+            var hmultiplier = [-0.5, 1, 2, 3, 4, 6, 10, 25, 75, 500];
+            var stage = 1;
+        </script>
+    </head>
+    <body>
+        <div id="header">
+            <p id="rank" style="display: inline-block;"></p>
+            <p id="inst" style="display: inline-block;">Select DEAL NEW to begin.</p>
+        </div>
+        <table style="visibility: hidden">
+            <tr>
+                <td>
+                    <p id="n0">10</p>
+                    <p id="s0" class="s">♠</p>
+                </td>
+                <td>
+                    <p id="n1">J</p>
+                    <p id="s1" class="s">♠</p>
+                </td>
+                <td>
+                    <p id="n2">Q</p>
+                    <p id="s2" class="s">♠</p>
+                </td>
+                <td>
+                    <p id="n3">K</p>
+                    <p id="s3" class="s">♠</p>
+                </td>
+                <td>
+                    <p id="n4">A</p>
+                    <p id="s4" class="s">♠</p>
+                </td>
+            </tr>
+            <tr id="hb">
+                <td class="noborder">
+                    <button id="h0" class="h" onclick="hold(0); return false;">HOLD</button>
+                </td>
+                <td class="noborder">
+                    <button id="h1" class="h" onclick="hold(1); return false;">HOLD</button>
+                </td>
+                <td class="noborder">
+                    <button id="h2" class="h" onclick="hold(2); return false;">HOLD</button>
+                </td>
+                <td class="noborder">
+                    <button id="h3" class="h" onclick="hold(3); return false;">HOLD</button>
+                </td>
+                <td class="noborder">
+                    <button id="h4" class="h" onclick="hold(4); return false;">HOLD</button>
+                </td>
+            </tr>
+        </table>
+        <button id="deal">DEAL NEW</button>
+        <br></br>
+        <form id="changebet" onsubmit="setbet(); return false;">
+            <input type="number" id="bet" min="1" placeholder="Change your bet here.">
+            <input type="submit" value="Set Bet">
+        </form>
+        <div id="stats">
+            <h1>Stats</h1>
+            <p id="currentbet">Current Bet: 5</p>
+            <p id="totalbet">Total Amount Bet: 0</p>
+            <p id="totalwin">Total Amount Won: 0</p>
+            <p id="score">Score: 0</p>
+        </div>
+        <div id="pt">
+            <h1 id="hw">Hand Winnings</h1>
+            <p id="pt0" style="color: red;">High Card: -2</p>
+            <p id="pt1" style="color: orange;">Pair: +5</p>
+            <p id="pt2" style="color: yellow;">Two Pair: +10</p>
+            <p id="pt3" style="color: chartreuse;">Three of a Kind: +15</p>
+            <p id="pt4" style="color: lime;">Straight: +20</p>
+            <p id="pt5" style="color: cyan;">Flush: +30</p>
+            <p id="pt6" style="color: deepskyblue;">Full House: +50</p>
+            <p id="pt7" style="color: blue;">Four of a Kind: +125</p>
+            <p id="pt8" style="color: darkviolet;">Straight Flush: +375</p>
+            <p id="pt9" style="color: magenta;">Royal Flush: +2500</p>
+        </div>
+        <script src="poker.js"></script>
+    </body>
+</html>
